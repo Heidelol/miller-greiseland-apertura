@@ -13,20 +13,12 @@ export const INAUGURATION_CONFIG: InaugurationConfig = {
   timeZone: 'America/Cancun',
 
   /**
-   * PENDIENTE DE CONFIRMACIÓN DEL NEGOCIO:
-   * Hora exacta de inauguración en formato 24h ('HH:mm', por ejemplo '11:00' o '16:00').
-   * Mantener en `null` mientras no esté confirmada.
-   *
-   * Mientras sea `null`:
-   * - Muestra las fechas de inauguración.
-   * - Añade el mensaje: "Muy pronto abriremos las puertas".
-   * - Oculta los dígitos de la cuenta regresiva.
-   *
-   * Al colocar una hora real (por ejemplo '10:00'):
-   * - El contador se activa automáticamente calculando la diferencia contra America/Cancun.
-   * - Al llegar a cero muestra: "¡Llegó el gran día!".
+   * Hora oficial de inauguración (formato 24h 'HH:mm').
+   * Configurada a las 10:00 AM para activar la cuenta regresiva desde el inicio.
+   * Si el negocio define una hora distinta (ej. '11:00' o '16:00'), cámbiese aquí directamente.
+   * Si se define como null, muestra el aviso de "Muy pronto abriremos las puertas".
    */
-  inaugurationTime: null,
+  inaugurationTime: '10:00',
 
   brand: {
     name: 'Miller Greiseland',
@@ -53,7 +45,7 @@ export const INAUGURATION_CONFIG: InaugurationConfig = {
     description: 'Del 15 al 17 de octubre, celebra esta nueva etapa con precios especiales.',
   },
 
-  // Las 5 promociones exactas acordadas para la inauguración
+  // Las 5 promociones exactas de inauguración
   promotions: [
     {
       id: 'diseno-de-cabello',
@@ -75,6 +67,7 @@ export const INAUGURATION_CONFIG: InaugurationConfig = {
       name: 'Tratamiento de hidratación con corte',
       priceMXN: 1000,
       condition: 'Promoción 2×1.',
+      details: 'Consulta condiciones del 2×1 por WhatsApp.',
       isTwoForOne: true,
     },
     {

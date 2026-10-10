@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Clock, Sparkles } from 'lucide-react';
+import { Sparkles, Calendar } from 'lucide-react';
 import { INAUGURATION_CONFIG } from '../config/inauguration';
 import { calculateCountdown } from '../utils/countdown';
 import type { CountdownState } from '../types/inauguration';
@@ -19,13 +19,11 @@ export const CountdownSection: React.FC = () => {
   );
 
   useEffect(() => {
-    // Si la hora de inauguración no está configurada, no activamos el intervalo
     if (!inaugurationTime || inaugurationTime.trim() === '') {
       setState(calculateCountdown(startDateIso, null, timeZone));
       return;
     }
 
-    // Actualización cada segundo cuando la hora sí está configurada
     const update = () => {
       const next = calculateCountdown(startDateIso, inaugurationTime, timeZone);
       setState(next);
@@ -37,29 +35,40 @@ export const CountdownSection: React.FC = () => {
   }, [startDateIso, inaugurationTime, timeZone]);
 
   return (
-    <section className="py-6 px-4 sm:px-6 max-w-4xl mx-auto" aria-labelledby="countdown-heading">
-      <div className="bg-white border border-[#99745A]/20 rounded-2xl p-6 sm:p-8 shadow-xs text-center">
-        {/* Caso A: Hora de inauguración pendiente de confirmación */}
-        {!state.isConfigured && (
-          <div className="flex flex-col items-center">
-            <div className="w-11 h-11 rounded-full bg-[#68794E]/10 border border-[#68794E]/25 flex items-center justify-center text-[#68794E] mb-3.5">
-              <Clock className="w-5 h-5 text-[#68794E]" aria-hidden="true" />
-            </div>
+    <section
+      className="pt-6 pb-2 px-4 sm:px-6 max-w-4xl mx-auto"
+      aria-labelledby="countdown-heading"
+    >
+      {/* Marco de alta papelería editorial */}
+      <div className="relative bg-[#FAF7F2] border border-[#C8933E]/30 ring-1 ring-[#99745A]/15 rounded-2xl p-5 sm:p-7 shadow-[0_4px_24px_rgba(153,116,90,0.06)] text-center overflow-hidden">
+        {/* Adorno sutil de esquina en orfebrería */}
+        <div className="absolute top-2 left-3 text-[#C8933E]/40 text-xs select-none">✦</div>
+        <div className="absolute top-2 right-3 text-[#C8933E]/40 text-xs select-none">✦</div>
 
+        {/* Encabezado del contador */}
+        <div className="flex items-center justify-center gap-2 mb-2">
+          <span className="w-6 h-[1px] bg-[#C8933E]/40"></span>
+          <span className="text-[10px] sm:text-[11px] font-bold text-[#68794E] uppercase tracking-[0.22em]">
+            Cuenta regresiva de inauguración
+          </span>
+          <span className="w-6 h-[1px] bg-[#C8933E]/40"></span>
+        </div>
+
+        {/* Caso A: Hora aún no configurada */}
+        {!state.isConfigured && (
+          <div className="py-2">
             <h2
               id="countdown-heading"
               className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#231E1B] mb-2"
             >
               {hero.pendingTimeNotice}
             </h2>
-
-            <p className="text-sm sm:text-base text-[#5C534B] max-w-md mb-4">
+            <p className="text-xs sm:text-sm text-[#5C534B] max-w-md mx-auto mb-3">
               Estamos preparando cada detalle para recibirte. El horario oficial de apertura será
               confirmado próximamente.
             </p>
-
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#F8F5EE] border border-[#99745A]/15 text-xs font-semibold text-[#231E1B]">
-              <span className="text-[#C8933E]">●</span>
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-[#99745A]/20 text-xs font-semibold text-[#231E1B]">
+              <Calendar className="w-3.5 h-3.5 text-[#C8933E]" aria-hidden="true" />
               <span>
                 {datesDisplay} de <span className="tabular-numbers">{year}</span>
               </span>
@@ -67,84 +76,80 @@ export const CountdownSection: React.FC = () => {
           </div>
         )}
 
-        {/* Caso B: Llegó el gran día (tiempo cumplido) */}
+        {/* Caso B: Llegó el gran día */}
         {state.isConfigured && state.isPassed && (
-          <div className="flex flex-col items-center py-2">
-            <div className="w-12 h-12 rounded-full bg-[#C8933E]/15 border border-[#C8933E]/40 flex items-center justify-center text-[#C8933E] mb-3">
-              <Sparkles className="w-6 h-6 text-[#C8933E]" aria-hidden="true" />
+          <div className="py-3 flex flex-col items-center">
+            <div className="w-10 h-10 rounded-full bg-[#C8933E]/15 border border-[#C8933E]/40 flex items-center justify-center text-[#C8933E] mb-2">
+              <Sparkles className="w-5 h-5 text-[#C8933E]" aria-hidden="true" />
             </div>
-
             <h2
               id="countdown-heading"
-              className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#231E1B] mb-2"
+              className="font-serif-luxury text-3xl sm:text-4xl font-bold text-[#231E1B] mb-1"
             >
               {hero.eventStartedMessage}
             </h2>
-
-            <p className="text-sm sm:text-base text-[#5C534B] max-w-md">
-              Nuestras puertas están abiertas para celebrar contigo. Te esperamos en Miller
-              Greiseland Studio.
+            <p className="text-xs sm:text-sm text-[#5C534B]">
+              Nuestras puertas están abiertas para celebrar contigo en Miller Greiseland Studio.
             </p>
           </div>
         )}
 
-        {/* Caso C: Cuenta regresiva activa con fecha y hora completa */}
+        {/* Caso C: Cuenta regresiva activa con cifras tabulares y estilo horología de lujo */}
         {state.isConfigured && !state.isPassed && (
           <div>
-            <div className="flex items-center justify-center gap-2 text-xs font-bold text-[#68794E] uppercase tracking-widest mb-3">
-              <Clock className="w-4 h-4" aria-hidden="true" />
-              <span>Cuenta regresiva para la apertura</span>
-            </div>
-
             <h2 id="countdown-heading" className="sr-only">
-              Tiempo restante para la inauguración: {state.days} días, {state.hours} horas,{' '}
-              {state.minutes} minutos y {state.seconds} segundos
+              Inauguración en: {state.days} días, {state.hours} horas, {state.minutes} minutos y{' '}
+              {state.seconds} segundos
             </h2>
 
-            {/* Bloques de cuenta regresiva: tamaño igual, números tabulares sin salto de ancho */}
+            {/* Módulos de tiempo de alta precisión */}
             <div
-              className="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto my-3"
+              className="grid grid-cols-4 gap-2 sm:gap-4 max-w-lg mx-auto my-3"
               aria-hidden="true"
             >
-              <div className="bg-[#F8F5EE] border border-[#99745A]/15 rounded-xl py-3 px-2 flex flex-col items-center">
-                <span className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#231E1B] tabular-numbers leading-none">
+              {/* Días */}
+              <div className="bg-white/90 border border-[#99745A]/20 rounded-xl py-3 px-1 sm:px-2 flex flex-col items-center shadow-xs">
+                <span className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#231E1B] tabular-numbers leading-none">
                   {String(state.days).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] sm:text-xs text-[#5C534B] uppercase tracking-wider font-semibold mt-1.5">
+                <span className="text-[9px] sm:text-[10px] text-[#8C6D53] uppercase tracking-[0.18em] font-bold mt-2">
                   Días
                 </span>
               </div>
 
-              <div className="bg-[#F8F5EE] border border-[#99745A]/15 rounded-xl py-3 px-2 flex flex-col items-center">
-                <span className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#231E1B] tabular-numbers leading-none">
+              {/* Horas */}
+              <div className="bg-white/90 border border-[#99745A]/20 rounded-xl py-3 px-1 sm:px-2 flex flex-col items-center shadow-xs">
+                <span className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#231E1B] tabular-numbers leading-none">
                   {String(state.hours).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] sm:text-xs text-[#5C534B] uppercase tracking-wider font-semibold mt-1.5">
+                <span className="text-[9px] sm:text-[10px] text-[#8C6D53] uppercase tracking-[0.18em] font-bold mt-2">
                   Horas
                 </span>
               </div>
 
-              <div className="bg-[#F8F5EE] border border-[#99745A]/15 rounded-xl py-3 px-2 flex flex-col items-center">
-                <span className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#231E1B] tabular-numbers leading-none">
+              {/* Minutos */}
+              <div className="bg-white/90 border border-[#99745A]/20 rounded-xl py-3 px-1 sm:px-2 flex flex-col items-center shadow-xs">
+                <span className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#231E1B] tabular-numbers leading-none">
                   {String(state.minutes).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] sm:text-xs text-[#5C534B] uppercase tracking-wider font-semibold mt-1.5">
+                <span className="text-[9px] sm:text-[10px] text-[#8C6D53] uppercase tracking-[0.18em] font-bold mt-2">
                   Minutos
                 </span>
               </div>
 
-              <div className="bg-[#F8F5EE] border border-[#99745A]/15 rounded-xl py-3 px-2 flex flex-col items-center">
-                <span className="font-serif-luxury text-2xl sm:text-4xl font-bold text-[#231E1B] tabular-numbers leading-none">
+              {/* Segundos */}
+              <div className="bg-white/90 border border-[#99745A]/20 rounded-xl py-3 px-1 sm:px-2 flex flex-col items-center shadow-xs">
+                <span className="font-serif-luxury text-3xl sm:text-5xl font-bold text-[#C8933E] tabular-numbers leading-none">
                   {String(state.seconds).padStart(2, '0')}
                 </span>
-                <span className="text-[10px] sm:text-xs text-[#5C534B] uppercase tracking-wider font-semibold mt-1.5">
+                <span className="text-[9px] sm:text-[10px] text-[#8C6D53] uppercase tracking-[0.18em] font-bold mt-2">
                   Segundos
                 </span>
               </div>
             </div>
 
-            <p className="text-xs text-[#5C534B] mt-3">
-              Inauguración: {datesDisplay} ({timeZone})
+            <p className="text-[11px] sm:text-xs text-[#5C534B] tracking-wide mt-2">
+              Apertura programada: <span className="font-semibold text-[#231E1B]">{datesDisplay}</span> · Horario {inaugurationTime} hrs ({timeZone})
             </p>
           </div>
         )}

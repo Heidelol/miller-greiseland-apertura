@@ -6,11 +6,11 @@ export const Header: React.FC = () => {
   const { brand, contact } = INAUGURATION_CONFIG;
 
   return (
-    <header className="sticky top-0 z-40 bg-[#F8F5EE]/95 backdrop-blur-md border-b border-[#99745A]/15 transition-all">
+    <header className="sticky top-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-b border-[#C8933E]/20 transition-all">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
         {/* Brand logo & typography */}
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-[#C8933E]/40 bg-white p-1 flex items-center justify-center shadow-xs overflow-hidden shrink-0">
+        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-[#C8933E]/45 bg-white p-1 flex items-center justify-center shadow-xs overflow-hidden shrink-0">
             <img
               src={brand.logoUrl}
               alt={brand.studioName}

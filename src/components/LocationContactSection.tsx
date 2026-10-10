@@ -8,15 +8,15 @@ export const LocationContactSection: React.FC = () => {
   return (
     <section
       id="ubicacion"
-      className="py-10 sm:py-12 px-4 sm:px-6 max-w-4xl mx-auto"
+      className="py-8 sm:py-12 px-4 sm:px-6 max-w-4xl mx-auto"
       aria-labelledby="ubicacion-heading"
     >
-      <div className="bg-white border border-[#99745A]/20 rounded-2xl p-6 sm:p-8 shadow-xs">
+      <div className="bg-[#FAF7F2] border border-[#C8933E]/25 ring-1 ring-[#99745A]/10 rounded-3xl p-6 sm:p-9 shadow-xs">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
           {/* Detalles de dirección y contacto */}
-          <div className="flex-1">
-            <span className="text-xs font-bold text-[#68794E] uppercase tracking-widest block mb-1.5">
-              Ubicación del estudio
+          <div className="flex-1 min-w-0">
+            <span className="text-[10px] sm:text-[11px] font-bold text-[#68794E] uppercase tracking-[0.22em] block mb-1.5">
+              Ubicación oficial del estudio
             </span>
             <h2
               id="ubicacion-heading"
@@ -34,7 +34,7 @@ export const LocationContactSection: React.FC = () => {
 
             <div className="flex items-center gap-3 text-sm text-[#5C534B]">
               <Phone className="w-4 h-4 text-[#68794E] shrink-0" aria-hidden="true" />
-              <span>Teléfono: </span>
+              <span>Teléfono directo: </span>
               <a
                 href={contact.phoneTel}
                 className="font-semibold text-[#231E1B] hover:text-[#C8933E] transition-colors underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-[#C8933E]"
@@ -50,11 +50,11 @@ export const LocationContactSection: React.FC = () => {
               href={contact.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl border-1.5 border-[#C8933E] text-[#231E1B] bg-transparent hover:bg-[#C8933E]/10 active:bg-[#C8933E]/20 font-bold text-sm tracking-wide transition-all focus-visible:outline-2 focus-visible:outline-[#231E1B]"
+              className="inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-xl border-1.5 border-[#C8933E] text-[#231E1B] bg-white hover:bg-[#C8933E]/10 active:bg-[#C8933E]/20 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all shadow-2xs focus-visible:outline-2 focus-visible:outline-[#231E1B]"
             >
               <MapPin className="w-4 h-4 text-[#C8933E]" aria-hidden="true" />
               <span>Cómo llegar</span>
-              <ExternalLink className="w-3.5 h-3.5 opacity-60" aria-hidden="true" />
+              <ExternalLink className="w-3.5 h-3.5 text-[#5C534B]" aria-hidden="true" />
             </a>
           </div>
         </div>
