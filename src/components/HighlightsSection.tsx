@@ -1,5 +1,5 @@
 import React from 'react';
-import { Coffee, UsersCheck } from 'lucide-react';
+import { Coffee, Users } from 'lucide-react';
 import { INAUGURATION_CONFIG } from '../config/inauguration';
 
 export const HighlightsSection: React.FC = () => {
@@ -29,7 +29,7 @@ export const HighlightsSection: React.FC = () => {
         {/* Cupo anunciado */}
         <div className="bg-white border border-[#99745A]/20 rounded-2xl p-5 sm:p-6 flex items-start gap-4 shadow-xs">
           <div className="w-10 h-10 rounded-xl bg-[#68794E]/12 border border-[#68794E]/30 flex items-center justify-center text-[#68794E] shrink-0 mt-0.5">
-            <UsersCheck className="w-5 h-5 text-[#68794E]" aria-hidden="true" />
+            <Users className="w-5 h-5 text-[#68794E]" aria-hidden="true" />
           </div>
           <div>
             <span className="text-[11px] font-bold text-[#68794E] uppercase tracking-wider block mb-1">

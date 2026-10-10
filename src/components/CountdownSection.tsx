@@ -144,7 +144,7 @@ export const CountdownSection: React.FC = () => {
             </div>
 
             <p className="text-xs text-[#5C534B] mt-3">
-              Inauguración el {datesDisplay} ({timeZone})
+              Inauguración: {datesDisplay} ({timeZone})
             </p>
           </div>
         )}

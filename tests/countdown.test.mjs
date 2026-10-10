@@ -30,7 +30,6 @@ test('Calculates countdown correctly when time is set in the future', () => {
   // Target: 2026-10-15 11:00 Cancun = 2026-10-15 16:00 UTC
   // Simulated now: 2026-10-10 11:00 Cancun = 2026-10-10 16:00 UTC
   // Difference: exactly 5 days (120 hours)
-  const targetTimeUtc = Date.UTC(2026, 9, 15, 16, 0, 0); // Oct is month index 9
   const nowUtc = Date.UTC(2026, 9, 10, 16, 0, 0);
 
   const result = calculateCountdown('2026-10-15', '11:00', 'America/Cancun', nowUtc);

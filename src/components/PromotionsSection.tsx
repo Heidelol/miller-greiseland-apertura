@@ -22,21 +22,21 @@ export const PromotionsSection: React.FC = () => {
   return (
     <section
       id="promociones"
-      className="py-10 sm:py-14 px-4 sm:px-6 max-w-4xl mx-auto"
+      className="py-8 sm:py-14 px-4 sm:px-6 max-w-4xl mx-auto"
       aria-labelledby="promociones-heading"
     >
       {/* Encabezado editorial */}
-      <div className="text-center max-w-2xl mx-auto mb-10">
+      <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
         <span className="text-xs font-bold text-[#68794E] uppercase tracking-widest block mb-2">
           Tarifas especiales
         </span>
         <h2
           id="promociones-heading"
-          className="font-serif-luxury text-3xl sm:text-4xl lg:text-4.5xl font-bold text-[#231E1B] tracking-tight mb-3"
+          className="font-serif-luxury text-2.5xl sm:text-4xl lg:text-4.5xl font-bold text-[#231E1B] tracking-tight mb-3 text-balance"
         >
           {promotionsIntro.title}
         </h2>
-        <p className="text-sm sm:text-base text-[#5C534B] leading-relaxed">
+        <p className="text-xs sm:text-base text-[#5C534B] leading-relaxed text-pretty">
           {promotionsIntro.description}
         </p>
       </div>
@@ -46,16 +46,16 @@ export const PromotionsSection: React.FC = () => {
         {promotions.map((promo) => (
           <div
             key={promo.id}
-            className="p-5 sm:p-6 transition-colors hover:bg-[#FAF8F4]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-6"
+            className="p-4 sm:p-6 transition-colors hover:bg-[#FAF8F4]/70 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-6"
           >
             {/* Nombre y condiciones */}
-            <div className="flex-1 pr-2">
+            <div className="flex-1 pr-1 min-w-0">
               <div className="flex flex-wrap items-center gap-2 mb-1">
-                <h3 className="font-serif-luxury text-xl sm:text-2xl font-bold text-[#231E1B] leading-snug">
+                <h3 className="font-serif-luxury text-lg sm:text-2xl font-bold text-[#231E1B] leading-snug">
                   {promo.name}
                 </h3>
                 {promo.isTwoForOne && (
-                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#68794E]/12 border border-[#68794E]/30 text-[#4B5935] text-[11px] font-bold tracking-wide">
+                  <span className="inline-block px-2.5 py-0.5 rounded-full bg-[#68794E]/12 border border-[#68794E]/30 text-[#4B5935] text-[10px] sm:text-[11px] font-bold tracking-wide">
                     {promo.condition}
                   </span>
                 )}
@@ -92,8 +92,8 @@ export const PromotionsSection: React.FC = () => {
             </div>
 
             {/* Precio destacado y alineado */}
-            <div className="sm:text-right shrink-0">
-              <span className="font-serif-luxury text-2xl sm:text-3xl font-bold text-[#231E1B] tabular-numbers block leading-none">
+            <div className="sm:text-right shrink-0 pt-1 sm:pt-0">
+              <span className="font-serif-luxury text-xl sm:text-3xl font-bold text-[#231E1B] tabular-numbers block leading-none">
                 {formatCurrencyMXN(promo.priceMXN)}
               </span>
               <span className="text-[10px] text-[#5C534B] uppercase tracking-wider font-semibold block mt-1">
@@ -110,17 +110,17 @@ export const PromotionsSection: React.FC = () => {
       </p>
 
       {/* Llamada principal a WhatsApp después de la lista */}
-      <div className="mt-8 text-center">
+      <div className="mt-7 sm:mt-8 text-center">
         <a
           href={mainWhatsAppUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-3 w-full sm:w-auto px-8 py-4 rounded-xl bg-[#C8933E] text-[#231E1B] font-bold text-base tracking-wide hover:bg-[#B8822E] active:scale-[0.99] transition-all shadow-sm focus-visible:outline-3 focus-visible:outline-[#231E1B] focus-visible:outline-offset-2"
+          className="inline-flex items-center justify-center gap-2.5 sm:gap-3 w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 rounded-xl bg-[#C8933E] text-[#231E1B] font-bold text-sm sm:text-base tracking-wide hover:bg-[#B8822E] active:scale-[0.99] transition-all shadow-sm focus-visible:outline-3 focus-visible:outline-[#231E1B] focus-visible:outline-offset-2"
         >
           <MessageCircle className="w-5 h-5 fill-current text-[#231E1B]" aria-hidden="true" />
           <span>Consultar disponibilidad por WhatsApp</span>
         </a>
-        <p className="text-xs text-[#5C534B] mt-2.5">
+        <p className="text-xs text-[#5C534B] mt-2.5 text-pretty">
           El mensaje se abrirá en WhatsApp para coordinar tu cita directamente con Miller.
         </p>
       </div>
