@@ -9,9 +9,11 @@ Diseñada con estilo editorial de lujo silencioso, rápida, ligera y coherente c
 
 Este proyecto está completamente separado del sitio principal (`miller-graceland`):
 - Repositorio y carpeta independientes (`miller-greiseland-apertura`).
+- **Repositorio en GitHub:** [https://github.com/Heidelol/miller-greiseland-apertura](https://github.com/Heidelol/miller-greiseland-apertura)
+- **Despliegue oficial en Vercel:** [https://miller-greiseland-apertura.vercel.app](https://miller-greiseland-apertura.vercel.app)
 - Sin dependencias de importación hacia otros proyectos.
 - Sin conexión a bases de datos (Supabase), pagos, carritos ni paneles administrativos.
-- Preparado para desplegarse en su propio proyecto en Vercel sin alterar `miller-graceland-demo`.
+- Desplegado en su propio proyecto en Vercel conservando intacto `miller-graceland-demo`.
 
 ---
 
