@@ -25,7 +25,7 @@ export const INAUGURATION_CONFIG: InaugurationConfig = {
     studioName: 'Miller Greiseland Studio',
     logoUrl: '/logo-miller.png',
     logoFallbackUrl: '/logo-miller.jpeg',
-    millerPortraitUrl: '/miller-greiseland.webp',
+    millerPortraitUrl: '/miller-greiseland.png',
     signature: 'Miller Greiseland Studio',
   },
 
